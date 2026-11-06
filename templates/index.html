@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home - College Event Registration System{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h2>Welcome to Our College Events!</h2>
+
+    <p>
+        Discover exciting college events, participate in activities,
+        and make your college life memorable.
+    </p>
+
+    <a href="/events" class="button">Explore Events</a>
+
+    <a href="/registrations" class="button">Register Now</a>
+</section>
+
+<hr>
+
+<h2>What Can You Do Here?</h2>
+
+<div class="event-card">
+    <h3>Explore College Events</h3>
+    <p>View event dates, venues, and descriptions of upcoming college events.</p>
+</div>
+
+<div class="event-card">
+    <h3>Register for Events</h3>
+    <p>Enter your details and select an event you want to participate in.</p>
+</div>
+
+<div class="event-card">
+    <h3>Manage Registrations</h3>
+    <p>View registered students and manage their registrations.</p>
+</div>
+
+{% endblock %}

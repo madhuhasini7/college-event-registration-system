@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block title %}Admin Login - College Event Registration System{% endblock %}
+
+{% block content %}
+
+<div class="event-card">
+    <h2>Admin Login</h2>
+
+    <p>Login to access the College Event Management Dashboard.</p>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+{% endblock %}

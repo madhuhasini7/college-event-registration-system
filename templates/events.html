@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+
+{% block title %}Events - College Event Registration System{% endblock %}
+
+{% block content %}
+
+<h2>College Events</h2>
+
+<p>Explore the upcoming events organised by our college.</p>
+
+{% if is_admin %}
+    <a href="/add-event" class="button">Add New Event</a>
+{% endif %}
+
+<hr>
+
+<h3>Available Events</h3>
+
+{% if events %}
+
+    {% for event in events %}
+
+        <div class="event-card">
+
+            <h3>{{ event['event_name'] }}</h3>
+
+            <p>
+                <strong>Date:</strong>
+                {{ event['event_date'] }}
+            </p>
+
+            <p>
+                <strong>Venue:</strong>
+                {{ event['event_venue'] }}
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                {{ event['event_description'] }}
+            </p>
+
+            {% if is_admin %}
+
+                <a href="/edit-event/{{ event['id'] }}">Edit</a>
+
+                <form action="/delete-event/{{ event['id'] }}" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+
+            {% endif %}
+
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No events have been added yet.</p>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Event - College Event Registration System{% endblock %}
+
+{% block content %}
+    <h2>Edit Event</h2>
+
+    <p>Update the details of your college event below.</p>
+
+    <form method="POST">
+        <label for="event_name">Event Name:</label>
+        <input
+            type="text"
+            id="event_name"
+            name="event_name"
+            value="{{ event['event_name'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="event_date">Event Date:</label>
+        <input
+            type="date"
+            id="event_date"
+            name="event_date"
+            value="{{ event['event_date'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="event_venue">Event Venue:</label>
+        <input
+            type="text"
+            id="event_venue"
+            name="event_venue"
+            value="{{ event['event_venue'] }}"
+            required
+        >
+
+        <br><br>
+
+        <label for="event_description">Event Description:</label>
+        <textarea
+            id="event_description"
+            name="event_description"
+            required
+        >{{ event['event_description'] }}</textarea>
+
+        <br><br>
+
+        <button type="submit">Update Event</button>
+    </form>
+
+    <p><a href="/events">Back to Events</a></p>
+{% endblock %}

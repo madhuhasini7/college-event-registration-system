@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - College Event Registration System{% endblock %}
+
+{% block content %}
+
+<div class="admin-welcome">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, Admin! Manage your college events and student registrations.</p>
+</div>
+
+<div class="admin-grid">
+
+    <div class="admin-card">
+        <h3>Total Events</h3>
+        <h1>{{ total_events }}</h1>
+        <a href="/events" class="button">Manage Events</a>
+    </div>
+
+    <div class="admin-card">
+        <h3>Total Registrations</h3>
+        <h1>{{ total_registrations }}</h1>
+        <a href="/registrations" class="button">Manage Registrations</a>
+    </div>
+
+</div>
+
+<h2>Quick Actions</h2>
+
+<div class="admin-actions">
+    <a href="/add-event" class="button">+ Add New Event</a>
+
+    <a href="/events" class="button">View All Events</a>
+
+    <a href="/registrations" class="button">View Students</a>
+
+    <a href="/admin-logout" class="button">Logout</a>
+</div>
+
+{% endblock %}

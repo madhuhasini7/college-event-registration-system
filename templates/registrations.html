@@ -1,0 +1,96 @@
+
+{% extends "base.html" %}
+
+{% block title %}Student Registrations - College Event Registration System{% endblock %}
+
+{% block content %}
+
+<h2>Student Event Registration</h2>
+
+<p>Enter your details to register for a college event.</p>
+
+<form method="POST">
+
+    <label for="student_name">Student Name:</label>
+    <input type="text" id="student_name" name="student_name" required>
+
+    <br><br>
+
+    <label for="student_email">Student Email:</label>
+    <input type="email" id="student_email" name="student_email" required>
+
+    <br><br>
+
+    <label for="event_id">Select Event:</label>
+
+    <select id="event_id" name="event_id" required>
+        <option value="">-- Select an Event --</option>
+
+        {% for event in events %}
+            <option value="{{ event['id'] }}">
+                {{ event['event_name'] }} - {{ event['event_date'] }}
+            </option>
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+
+{% if is_admin %}
+
+    <hr>
+
+    <h2>Registered Students</h2>
+
+    {% if registrations %}
+
+        {% for registration in registrations %}
+
+            <div class="event-card">
+
+                <p>
+                    <strong>Student Name:</strong>
+                    {{ registration['student_name'] }}
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    {{ registration['student_email'] }}
+                </p>
+
+                <p>
+                    <strong>Event:</strong>
+                    {{ registration['event_name'] }}
+                </p>
+
+                <p>
+                    <strong>Event Date:</strong>
+                    {{ registration['event_date'] }}
+                </p>
+
+                <form
+                    action="{{ url_for('delete_registration', registration_id=registration['id']) }}"
+                    method="POST"
+                >
+                    <button type="submit">Delete Registration</button>
+                </form>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No students have registered yet.</p>
+
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}
